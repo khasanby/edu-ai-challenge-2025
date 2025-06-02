@@ -1,0 +1,7 @@
+You are a software architect expert. Use Chain-of-Thought reasoning to analyze the following requirements and recommend the most suitable type of database (e.g., relational, document, graph, key-value, wide-column).
+
+1. Our application is a social media platform with millions of users.
+2. They concurrently message each other and we need to store all the data such as profiles, posts, and connections between users. They put stories, share them with each other, messaging, comments, friends, likes, dislikes and all other statistical data.
+3. We need high read speed.
+4. Because, we are expecting to have about 80% read operations and 20% of write operations.
+5. Scalability is just important because user database will grow.
