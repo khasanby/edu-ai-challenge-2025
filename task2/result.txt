@@ -1,0 +1,30 @@
+---
+
+**Title:** Login Button Unresponsive on Chrome Due to JavaScript Error and Duplicate Button Elements
+
+**Description:**
+On the login page of the web application, the login button is unresponsive when accessed via the Chrome browser. Clicking the button produces a JavaScript error in the console, and the button does not trigger any action. Upon inspecting the page source, two login button elements are present, which may be contributing to the malfunction.
+
+**Steps to Reproduce:**
+
+1. Open the login page in the Chrome browser.
+2. Attempt to click the login button.
+3. Open the browser console (F12 or right-click > Inspect > Console tab).
+4. Observe the error: `Uncaught ReferenceError: addText is not defined at onclick file:///C:/Users/Dany/Desktop/javatest/index.html:1`
+5. Inspect the page source and observe the presence of two login button elements.
+
+**Expected vs Actual Behavior:**
+
+* *Expected:* The login button should be clickable and trigger the login action without any JavaScript errors. Only one button should be rendered in the DOM.
+* *Actual:* The button is unresponsive, and a JavaScript error is thrown. Two login button elements are rendered in the DOM.
+
+**Environment (if known):**
+
+* Browser: Chrome (version not specified)
+* OS: Windows (based on file path)
+* URL: `file:///C:/Users/Dany/Desktop/javatest/index.html` (local file)
+
+**Severity or Impact:** Medium
+This issue prevents users from logging in via Chrome and may confuse users due to the presence of multiple button elements.
+
+---
