@@ -1,0 +1,10 @@
+{
+  "summary": "Remote work has gained popularity, especially after the pandemic, offering benefits like increased employee satisfaction, better work-life balance, and reduced costs for companies. However, it also poses challenges such as isolation, reduced collaboration, and difficulty maintaining productivity and communication. Despite these drawbacks, remote work is expected to persist, with hybrid models and advancing technology supporting its continued adoption.",
+  "sentiment": "Neutral",
+  "score": 0,
+  "emotional_tone": ["Balanced", "Realistic", "Forward-looking"],
+  "original_text_length": 1136,
+  "summary_length": 455,
+  "compression_ratio": "0.40",
+  "notes": "The sentiment is neutral due to the balanced presentation of both advantages and disadvantages. The tone suggests a practical outlook, acknowledging current issues while expressing cautious optimism about future developments."
+}
