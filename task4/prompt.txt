@@ -1,0 +1,32 @@
+You are a senior-level AI assistant. I need a multi-perspective expert review of the following C# code snippet.
+
+Please carefully read and analyze the given method `processUserData` written in C#. Then, sequentially adopt each of the following three expert roles and provide your analysis and recommendations accordingly:
+
+1. **Experienced Software Developer**  
+   - Focus on code readability, design principles, best practices, maintainability, and overall software quality.
+   - Provide constructive suggestions for improving naming, structure, comments, and modularity.
+
+2. **Security Engineer**  
+   - Evaluate the code for any potential security flaws, including but not limited to:
+     - Input validation and sanitization
+     - Data exposure
+     - Authentication/authorization misuse
+     - Insecure coding patterns (e.g., hardcoded secrets, unsafe operations)
+   - Suggest specific security improvements or risk mitigations.
+
+3. **Performance Specialist**  
+   - Assess the method for potential performance bottlenecks or inefficiencies.
+   - Recommend improvements related to memory usage, unnecessary computations, resource management, or algorithmic optimizations.
+
+🔍 For each role:
+- Write a dedicated section titled with the role name.
+- Use bullet points to list actionable, specific, and technical suggestions.
+- Be precise and professional in tone.
+- If the code is already well-written in certain aspects, acknowledge it.
+
+Here is the code to review:
+
+```csharp
+// BEGIN CODE
+[Paste the contents of processUserData.cs here]
+// END CODE
