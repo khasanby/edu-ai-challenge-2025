@@ -57,23 +57,45 @@ class Enigma {
     this.plugboardPairs = plugboardPairs;
   }
   stepRotors() {
-    if (this.rotors[2].atNotch()) this.rotors[1].step();
-    if (this.rotors[1].atNotch()) this.rotors[0].step();
+    // Handle double-stepping: if middle rotor is at notch, it will step itself AND the left rotor
+    const middleAtNotch = this.rotors[1].atNotch();
+    const rightAtNotch = this.rotors[2].atNotch();
+    
+    // Step left rotor if middle rotor is at notch
+    if (middleAtNotch) {
+      this.rotors[0].step();
+    }
+    
+    // Step middle rotor if right rotor is at notch OR if middle rotor is at notch (double-stepping)
+    if (rightAtNotch || middleAtNotch) {
+      this.rotors[1].step();
+    }
+    
+    // Right rotor always steps
     this.rotors[2].step();
   }
   encryptChar(c) {
     if (!alphabet.includes(c)) return c;
     this.stepRotors();
+    
+    // First plugboard application
     c = plugboardSwap(c, this.plugboardPairs);
+    
+    // Forward through rotors
     for (let i = this.rotors.length - 1; i >= 0; i--) {
       c = this.rotors[i].forward(c);
     }
 
+    // Through reflector
     c = REFLECTOR[alphabet.indexOf(c)];
 
+    // Backward through rotors
     for (let i = 0; i < this.rotors.length; i++) {
       c = this.rotors[i].backward(c);
     }
+
+    // Second plugboard application (this was missing!)
+    c = plugboardSwap(c, this.plugboardPairs);
 
     return c;
   }
