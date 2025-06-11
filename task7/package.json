@@ -1,0 +1,42 @@
+{
+  "name": "sea-battle-game",
+  "version": "1.0.0",
+  "description": "A modular Sea Battle (Battleship) game built with modern ES6+ JavaScript",
+  "type": "module",
+  "main": "index.js",
+  "bin": {
+    "sea-battle": "./index.js"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node --inspect index.js",
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
+    "test:watch": "node --experimental-vm-modules node_modules/jest/bin/jest.js --watch",
+    "test:coverage": "node --experimental-vm-modules node_modules/jest/bin/jest.js --coverage"
+  },
+  "keywords": [
+    "battleship",
+    "sea-battle",
+    "game",
+    "cli",
+    "javascript",
+    "es6",
+    "modular"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yourusername/sea-battle-game.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/sea-battle-game/issues"
+  },
+  "homepage": "https://github.com/yourusername/sea-battle-game#readme"
+} 
