@@ -131,7 +131,9 @@ async function main() {
 }
 
 // Start the game if this file is run directly
-if (import.meta.url === `file://${process.argv[1]}`) {
+// Check if this file is the main module being executed
+const isMainModule = process.argv[1] && import.meta.url.endsWith(process.argv[1].replace(/\\/g, '/'));
+if (isMainModule || process.argv[1]?.endsWith('index.js')) {
     main();
 }
 
