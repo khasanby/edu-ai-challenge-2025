@@ -1,0 +1,38 @@
+Test Report for Validation Library
+=================================
+
+Test Framework: Jest
+
+Files Tested:
+-------------
+- src/validators/date.ts
+- src/validators/number.ts
+- src/validators/object.ts
+- (Other validators: string.ts, array.ts, boolean.ts, schema.ts have minimal or no coverage)
+
+Features Covered:
+-----------------
+- date.ts: Valid Date objects, ISO strings, invalid types (string, null, undefined), invalid Date, optional fields, custom error messages
+- number.ts: Min, max, integer, NaN, null, undefined, string, negative/positive, optional, edge cases (0, MAX_SAFE_INTEGER), custom error messages
+- object.ts: Required keys, missing keys, invalid types, optional fields, nested objects, custom error messages
+
+Uncovered Branches/Lines:
+------------------------
+- number.ts: Most methods and validation logic are not covered (7.14% statements, 0% branches, 0% functions, 7.4% lines)
+- object.ts: Most methods and validation logic are not covered (9.09% statements, 0% branches, 0% functions, 10% lines)
+- string.ts, array.ts, boolean.ts: Minimal coverage (10-14%)
+
+Fully Covered:
+--------------
+- date.ts: 100% statements, branches, functions, lines
+
+Global Coverage:
+----------------
+- Statements: 23.4%
+- Branches: 13.04%
+- Functions: 11.62%
+- Lines: 24.06%
+
+Conclusion:
+-----------
+The current test coverage does NOT meet the 60% requirement. Only date.ts is fully covered; other validators require additional tests to meet the threshold. 
