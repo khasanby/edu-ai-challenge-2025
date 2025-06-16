@@ -1,0 +1,26 @@
+{
+  "name": "service-analyzer",
+  "version": "1.0.0",
+  "description": "A TypeScript console application that uses OpenAI to analyze services",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "tsc && node dist/index.js"
+  },
+  "keywords": [
+    "openai",
+    "typescript",
+    "console"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.5.0",
+    "openai": "^4.104.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.19.0",
+    "typescript": "^5.8.3"
+  }
+}
