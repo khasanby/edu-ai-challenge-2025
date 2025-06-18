@@ -61,7 +61,7 @@ The dataset includes products from these categories:
 
 ## 🔧 Technical Details
 
-- **Model**: `gpt-4o-mini` with function calling
+- **Model**: `gpt-4.1-mini` with function calling
 - **Filtering Logic**: Entirely handled by OpenAI (no hardcoded Python filtering)
 - **Function Schema**: Supports category, max_price, min_rating, and in_stock parameters
 - **Error Handling**: Comprehensive error messages for API failures and missing files
@@ -97,7 +97,7 @@ task10/
 
 This application meets all Task 10 requirements:
 - ✅ Uses OpenAI function calling exclusively for filtering
-- ✅ Implements `gpt-4o-mini` model
+- ✅ Implements `gpt-4.1-mini` model
 - ✅ Includes comprehensive product dataset (50+ items)
 - ✅ Handles natural language queries effectively
 - ✅ Proper error handling and user experience
