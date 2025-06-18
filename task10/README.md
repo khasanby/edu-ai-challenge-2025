@@ -1,11 +1,11 @@
 # Product Search Tool - EDU AI Challenge Task 10
 
-This Python console application uses OpenAI's **function calling** to filter a hardcoded dataset of products based on natural language input from users. The app leverages `gpt-4o-mini` to intelligently parse user queries and determine appropriate filtering criteria.
+This Python console application uses OpenAI's **function calling** to filter a hardcoded dataset of products based on natural language input from users. The app leverages `gpt-4.1-mini` to intelligently parse user queries and determine appropriate filtering criteria.
 
 ## ✨ Features
 
 - 🔍 Natural language product search
-- 🤖 OpenAI function calling with `gpt-4o-mini` 
+- 🤖 OpenAI function calling with `gpt-4.1-mini` 
 - 📦 50+ diverse products across multiple categories
 - 🎯 Intelligent filtering by category, price, rating, and stock status
 - 💬 User-friendly console interface
@@ -37,7 +37,7 @@ python main.py
 The application will:
 1. Load the product dataset from `products.json`
 2. Prompt you for a natural language search query
-3. Send your query to OpenAI's `gpt-4o-mini` model using function calling
+3. Send your query to OpenAI's `gpt-4.1-mini` model using function calling
 4. Display filtered results based on the AI's interpretation
 
 ## 💡 Example User Queries
