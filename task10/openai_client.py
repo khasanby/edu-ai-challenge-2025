@@ -28,6 +28,10 @@ class OpenAIClient:
                     "parameters": {
                         "type": "object",
                         "properties": {
+                            "product_name": {
+                                "type": "string",
+                                "description": "Specific product name to search for (e.g., 'Smartphone', 'Wireless Headphones')"
+                            },
                             "category": {
                                 "type": "string",
                                 "description": "Product category to filter by (e.g., Electronics, Kitchen, Fitness, Books, Clothing)"
@@ -73,11 +77,32 @@ Available product categories: {', '.join(categories)}
 Price range: {price_range}
 Total products: {len(products)}
 
+CRITICAL RULES - YOU MUST FOLLOW THESE:
+1. If user mentions ANY price limit (like "under $100", "below $50", "less than $200", "under 800"), you MUST set max_price to that number
+2. If user mentions a specific product type (like "smartphone", "laptop", "headphones"), look for products with that name in the dataset
+3. If user mentions a general category (like "electronics", "books", "fitness"), filter by category
+4. If user mentions rating requirements (like "above 4.5", "good ratings"), set min_rating appropriately
+5. If user mentions stock status (like "in stock", "available"), set in_stock to true
+
+EXAMPLES:
+- "electronics under $100" → {{"category": "Electronics", "max_price": 100}}
+- "smartphone under $800" → {{"product_name": "smartphone", "max_price": 800}}
+- "books above 4.5" → {{"category": "Books", "min_rating": 4.5}}
+
 Use the filter_products function to specify filtering criteria based on the user's natural language query. 
-Only specify parameters that are clearly mentioned or implied in the user's request.
+Be very careful to extract and apply ALL mentioned criteria including price limits, ratings, categories, and stock status.
 """
 
-        user_message = f"User search query: '{user_query}'"
+        user_message = f"""User search query: '{user_query}'
+
+Please analyze this query and extract ALL filtering criteria:
+- If there's a price limit, set max_price
+- If there's a specific product, set product_name  
+- If there's a category, set category
+- If there's a rating requirement, set min_rating
+- If there's a stock requirement, set in_stock
+
+Query: {user_query}"""
         
         try:
             # Make the API call with function calling
@@ -100,6 +125,24 @@ Only specify parameters that are clearly mentioned or implied in the user's requ
             # Parse the filtering criteria from the function call
             criteria = json.loads(tool_calls[0].function.arguments)
             print(f"🔍 OpenAI determined filtering criteria: {criteria}")
+            
+            # Fallback: If AI didn't extract price but user mentioned it, add it manually
+            if 'max_price' not in criteria:
+                import re
+                # Look for various price patterns
+                price_patterns = [
+                    r'under\s+\$?(\d+)',
+                    r'below\s+\$?(\d+)', 
+                    r'less\s+than\s+\$?(\d+)',
+                    r'under\s+(\d+)',
+                    r'below\s+(\d+)'
+                ]
+                for pattern in price_patterns:
+                    price_match = re.search(pattern, user_query.lower())
+                    if price_match:
+                        criteria['max_price'] = float(price_match.group(1))
+                        print(f"🔧 Added missing price filter: max_price = {criteria['max_price']}")
+                        break
             
             # Apply the filtering logic based on OpenAI's criteria
             filtered_products = self._apply_filters(products, criteria)
@@ -124,6 +167,12 @@ Only specify parameters that are clearly mentioned or implied in the user's requ
             list: Filtered products
         """
         filtered = products.copy()
+        
+        # Filter by specific product name if specified by OpenAI
+        if criteria.get('product_name'):
+            product_name = criteria['product_name'].lower()
+            filtered = [p for p in filtered 
+                       if product_name in p.get('name', '').lower()]
         
         # Filter by category if specified by OpenAI
         if criteria.get('category'):
