@@ -1,0 +1,18 @@
+{
+  "word_count": 142,
+  "speaking_speed_wpm": 140,
+  "frequently_mentioned_topics": [
+    {
+      "topic": "daily routine",
+      "mentions": 3
+    },
+    {
+      "topic": "food (breakfast, lunch, dinner)",
+      "mentions": 4
+    },
+    {
+      "topic": "activities (work, walking dog, watching TV)",
+      "mentions": 4
+    }
+  ]
+}
